@@ -1,0 +1,124 @@
+Tech Talk Script
+
+creating a new app and database
+
+	rails new <app_name>
+
+	rails server or rails s for short
+		Warning: Issue with release for Windows, go to assets>javascript> remove all required except jquery
+					javascript won't work, need to go into config files to fix in each new app which is not practical for demo
+
+	rails generate scaffold  status      name:string content:text
+							<db name>  	<field:type>
+						
+		Notes: 	creates status.rb in app>models directory
+				creates schema
+
+	rake db:migrate
+		Note: migrates database
+
+Views
+
+	***Open views>statuses>index.html.erb ***
+	
+		Talk about ERB tags
+		Embedded Ruby
+		Output-tag: <%= code > outputs value of code following object.property format 
+								(example status.name gets name property from current status object)
+								
+		Helper functions: link_to creates an anchor tag with given text and url (Show and Edit)
+								(destroy links back to statuses page but calls method to delete post)
+			
+			***Open Browser and inspect element to display that html is being outputted by controller to browser***
+			
+			***Open File to demo partial views app>views>statuses>_form.html.erb ***
+
+
+			
+		Partial Views- represents shared content like the head and body sections
+		
+		(Major Benefits are that it reduces redundancy, embraces encapsulation from OOP)
+
+
+			
+			***Open File to demo partial views*** app>views>statuses>edit.html.erb ***
+			
+			Notes: <% render 'form' %> tells controller to render the _form  on that line
+
+
+		
+		***Open File to demo layout*** app>views>layouts.application.html.erb ***
+		
+		Layouts- is a special view that wraps a page view and gives it a common structure
+		
+				Notes: yield renders the page view into the layout view
+				
+			***Add <h1>Treebook</h1> above yield and run server to demo***
+			
+				Notes: 	Helper methods in head section point to assets
+						where rails handles all the .js .css and images
+Formatting
+	***Add Bootstrap files css/js***
+		Note: 	.min are minimized without comments and whitespace to use with final 
+			site (Rails does this for us)
+		
+	*** Open assets>stylesheets>scaffold.css delete contents, explain importance ***
+	
+	***Add style element around yield***
+	
+			<div class = "container">
+				<% yield %> (this is already there)
+			</div>
+			
+	***Add Navbar after <body>***
+			
+	<div class = "navbar navbar-inverse navbar-fixed-top">
+		<div class = "navbar-inner">
+			<div class = "container">
+				<a href = "#" class="brand">Treebook</a>
+				<!--list of links for header-->
+				<ul class = "nav">
+					<li><%= link_to "All Statuses", statuses_path %></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	***Add CSS to fix header issue assets>stylesheets>application.css***
+	
+		body{ padding-top: 40px;}
+		
+Edit Status Class
+
+	***Add CSS for status style in assets>stylesheets>statuses.css***		
+		
+	// adds solid grey bottom border 1px wide
+	.status{
+		border-bottom: solid 1px #CCC;
+		padding: 5px 0;
+	}
+
+	//overides default p styling for statuses
+	.status p {
+		margin: 4px 0;
+	}
+	
+			
+	
+
+					
+				
+					
+
+			
+				
+			
+			
+			
+			
+			
+
+
+
+
+						
